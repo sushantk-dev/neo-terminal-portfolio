@@ -46,10 +46,10 @@ export default function AboutPage() {
               <div className="pl-6 space-y-4 text-terminal-text">
                 <p className="text-lg">
                   Hello! I'm <span className="text-terminal-cyan font-semibold">{siteConfig.author.name}</span>, 
-                  a passionate full-stack developer focused on building innovative solutions and learning new technologies.
+                  a passionate java full-stack developer focused on building innovative solutions and learning new technologies.
                 </p>
                 <p>
-                  With expertise in modern web technologies, I specialize in creating scalable, performant applications 
+                  With expertise in modern technologies, I specialize in creating scalable, performant applications 
                   that solve real-world problems. My journey in software development has taken me through various domains, 
                   from building responsive frontends to architecting robust backend systems.
                 </p>
@@ -61,7 +61,7 @@ export default function AboutPage() {
                 {/* Quick Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4">
                   <div className="bg-terminal-bg border border-terminal-border rounded p-3 text-center">
-                    <div className="text-2xl font-bold text-terminal-cyan">4+</div>
+                    <div className="text-2xl font-bold text-terminal-cyan">4.5+</div>
                     <div className="text-xs text-terminal-textMuted mt-1">Years Experience</div>
                   </div>
                   <div className="bg-terminal-bg border border-terminal-border rounded p-3 text-center">

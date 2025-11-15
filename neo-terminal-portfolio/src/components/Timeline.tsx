@@ -15,39 +15,39 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     id: '1',
-    year: '2025',
-    title: 'Senior Full-Stack Developer',
-    company: 'Tech Innovations Inc.',
-    description: 'Leading development of cloud-native applications using modern tech stack. Architecting scalable solutions and mentoring junior developers.',
-    technologies: ['Next.js', 'TypeScript', 'AWS', 'Docker'],
+    year: '2024',
+    title: 'Software Engineer II',
+    company: 'Equifax',
+    description: 'Working on enterprise-scale applications in a hybrid environment at Trivandrum, Kerala. Leading development initiatives with focus on cloud-native technologies, containerization, and distributed systems.',
+    technologies: ['Maven', 'Kubernetes', 'Docker', 'Java', 'Angular', 'TypeScript', 'Google Cloud Platform (GCP)', 'Jenkins', 'Spring'],
     type: 'work',
   },
   {
     id: '2',
-    year: '2023',
-    title: 'Full-Stack Developer',
-    company: 'StartUp Ventures',
-    description: 'Built and maintained multiple web applications. Implemented CI/CD pipelines and improved application performance by 40%.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Redis'],
+    year: '2022',
+    title: 'Software Engineer',
+    company: 'SunTec Business Solutions',
+    description: 'Developed and maintained scalable backend systems for financial services. Implemented RESTful APIs and worked with NoSQL databases. Enhanced system performance and reliability through optimized database queries and efficient API design.',
+    technologies: ['Java', 'MongoDB', 'REST APIs', 'Maven', 'React.js', 'MariaDB', 'Spring Boot', 'Amazon S3', 'Oracle Database', 'Git', 'Redis', 'System Architecture', 'Apache Kafka'],
     type: 'work',
   },
   {
     id: '3',
-    year: '2022',
-    title: 'B.Tech in Computer Science',
-    company: 'University of Technology',
-    description: 'Graduated with honors. Focused on software engineering, algorithms, and distributed systems.',
-    technologies: ['Data Structures', 'Algorithms', 'System Design'],
-    type: 'education',
+    year: '2021',
+    title: 'Associate Software Engineer',
+    company: 'SunTec Business Solutions',
+    description: 'Started professional journey building enterprise applications for the financial technology sector. Worked with relational databases and developed RESTful services. Gained expertise in backend development, database management, and software engineering best practices.',
+    technologies: ['Java', 'Apache NiFi', 'Apache Kafka', 'REST APIs', 'MariaDB', 'Oracle Database', 'Cassandra', 'Maven', 'Docker', 'Jenkins'],
+    type: 'work',
   },
   {
     id: '4',
-    year: '2021',
-    title: 'Junior Developer',
-    company: 'Digital Solutions',
-    description: 'Started professional journey building responsive web applications. Learned industry best practices and agile methodologies.',
-    technologies: ['JavaScript', 'HTML/CSS', 'Git', 'REST APIs'],
-    type: 'work',
+    year: '2020',
+    title: 'B.Tech in Computer Science',
+    company: 'APJ Abdul Kalam Technological University',
+    description: 'Graduated with Bachelor of Technology in Computer Science from UKF College of Engineering and Technology, Parippally, Kollam. Built strong foundation in software engineering, algorithms, data structures, and system design principles.',
+    technologies: ['Data Structures', 'Algorithms', 'System Design', 'Software Engineering', 'DBMS', 'Computer Networks', 'Operating Systems'],
+    type: 'education',
   },
 ];
 
@@ -67,7 +67,7 @@ export default function Timeline() {
       case 'project':
         return '🚀';
       default:
-        return '📍';
+        return '📌';
     }
   };
 
@@ -185,7 +185,7 @@ export default function Timeline() {
           <div className="w-2 h-2 rounded-full bg-terminal-green"></div>
         </div>
         <div className="text-terminal-green text-sm flex items-center gap-2">
-          <span className="text-terminal-prompt">❯</span>
+          <span className="text-terminal-prompt">¯</span>
           <span>Journey continues...</span>
         </div>
       </div>

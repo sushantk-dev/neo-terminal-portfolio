@@ -11,7 +11,7 @@ interface Skill {
 
 const skillsData: Skill[] = [
   // Frontend
-  { name: 'React/Next.js', level: 90, category: 'Frontend', icon: '⚛️' },
+  { name: 'Angular/React/Next.js', level: 90, category: 'Frontend', icon: '⚛️' },
   { name: 'TypeScript', level: 85, category: 'Frontend', icon: '📘' },
   { name: 'Tailwind CSS', level: 88, category: 'Frontend', icon: '🎨' },
   { name: 'JavaScript', level: 92, category: 'Frontend', icon: '🟨' },
