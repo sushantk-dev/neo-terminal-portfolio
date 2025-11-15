@@ -3,10 +3,16 @@ import NowWidget from '@/components/NowWidget';
 import MediumFeed from '@/components/MediumFeed';
 import GitHubActivity from '@/components/GitHubActivity';
 
-export default function Home() {
+// async function delay(ms: number) {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
+export default async function Home() {
   // Get usernames from environment variables or config
   const mediumUsername = process.env.NEXT_PUBLIC_MEDIUM_USERNAME || 'SK9712';
   const githubUsername = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'SK9712';
+
+  // await delay(2000);
 
   return (
     <div className="min-h-screen p-4 sm:p-8">

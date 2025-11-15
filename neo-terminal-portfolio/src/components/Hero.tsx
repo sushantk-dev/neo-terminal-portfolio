@@ -64,10 +64,10 @@ export default function Hero() {
 
                 {/* System Info - Technical Stack */}
                 <div className="space-y-2">
-                  <p className="text-terminal-success flex items-center gap-2">
+                  {/* <p className="text-terminal-success flex items-center gap-2">
                     <span className="w-2 h-2 bg-terminal-success rounded-full animate-pulse"></span>
                     Available for opportunities
-                  </p>
+                  </p> */}
                   
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     <div className="flex items-center gap-2">
@@ -88,7 +88,7 @@ export default function Hero() {
                     <div className="flex items-center gap-2">
                       <span className="text-terminal-cyan">›</span>
                       <span className="text-terminal-textMuted">Cloud:</span>
-                      <span className="text-terminal-cyan">AWS Certified</span>
+                      <span className="text-terminal-cyan">Google Cloud Certified</span>
                     </div>
                   </div>
                 </div>
