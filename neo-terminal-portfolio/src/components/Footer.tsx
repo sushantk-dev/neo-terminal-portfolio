@@ -88,6 +88,26 @@ export default function Footer() {
                   Medium
                 </a>
               )}
+              {socialLinks.hackerrank && (
+                <a
+                href={socialLinks.hackerrank}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="terminal-link text-sm"
+                >
+                 HackerRank
+                </a>
+              )}
+              {socialLinks.leetcode && (
+                <a
+                href={socialLinks.leetcode}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="terminal-link text-sm"
+                >
+                LeetCode
+                </a>
+              )}
             </div>
           </div>
         </div>

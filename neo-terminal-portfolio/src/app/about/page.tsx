@@ -4,6 +4,7 @@ import Timeline from '@/components/Timeline';
 import Skills from '@/components/Skills';
 import ResumeDownload from '@/components/ResumeDownload';
 import { siteConfig } from '@/lib/config';
+import CodingProfiles from '@/components/CodingProfiles';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -90,6 +91,19 @@ export default function AboutPage() {
               </h2>
               <div className="pl-6">
                 <Skills />
+              </div>
+            </div>
+          </div>
+
+          {/* Coding Profiles Section */}
+          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.15s' }}>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-terminal-cyan flex items-center">
+                <span className="text-terminal-prompt mr-2">›</span>
+                Coding Profiles
+              </h2>
+              <div className="pl-6">
+                <CodingProfiles />
               </div>
             </div>
           </div>

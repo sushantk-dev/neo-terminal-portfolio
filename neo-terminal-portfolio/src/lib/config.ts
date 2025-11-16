@@ -11,6 +11,8 @@ export const siteConfig: SiteConfig = {
     linkedin: "https://www.linkedin.com/in/sk9712",
     twitter: "https://x.com/caveman9712",
     medium: "https://medium.com/@SK9712",
+    hackerrank: "https://www.hackerrank.com/profile/lOne9wOlf",
+    leetcode: "https://leetcode.com/u/SK9712/"
   },
   version: "1.0.0",
   lastUpdated: new Date().toISOString().split("T")[0],
@@ -44,4 +46,6 @@ export const socialLinks = {
   linkedin: siteConfig.author.linkedin,
   twitter: siteConfig.author.twitter,
   medium: siteConfig.author.medium,
+  hackerrank: siteConfig.author.hackerrank,
+  leetcode: siteConfig.author.leetcode
 };

@@ -10,6 +10,8 @@ export interface SiteConfig {
     linkedin?: string;
     twitter?: string;
     medium?: string;
+    hackerrank?: string;
+    leetcode?: string;
   };
   version: string;
   lastUpdated: string;
