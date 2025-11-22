@@ -15,6 +15,7 @@ export default function ProjectsListClient({
 }: ProjectsListClientProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('grid');
   const [sortBy, setSortBy] = useState<'name' | 'category'>('name');
 
   const filteredAndSortedProjects = useMemo(() => {
@@ -50,15 +51,31 @@ export default function ProjectsListClient({
     return sorted;
   }, [projects, searchQuery, selectedCategory, sortBy]);
 
-  const featuredProjects = filteredAndSortedProjects.filter((p) => p.featured);
-  const regularProjects = filteredAndSortedProjects.filter((p) => !p.featured);
+  // Organize projects by timeline
+  const projectsByTimeline = useMemo(() => {
+    const featured = filteredAndSortedProjects.filter((p) => p.featured);
+    
+    const professional = filteredAndSortedProjects.filter((p) => 
+      p.category === 'Backend' && !p.featured
+    );
+    
+    const academic = filteredAndSortedProjects.filter((p) => 
+      (p.id === 'ashraya-ngo-website' || p.id === 'malicious-url-detection') && !p.featured
+    );
+    
+    const learning = filteredAndSortedProjects.filter((p) => 
+      (p.id === 'html-css-js-editor' || p.id === 'car-jump-game')
+    );
+
+    return { featured, professional, academic, learning };
+  }, [filteredAndSortedProjects]);
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Backend':
         return '⚙️';
       case 'System Design':
-        return '🏗️';
+        return '🗂️';
       case 'Open Source':
         return '🌟';
       case 'Full Stack':
@@ -142,31 +159,60 @@ export default function ProjectsListClient({
           </div>
         </div>
 
-        {/* Sort Options */}
-        <div className="space-y-2">
-          <label className="text-terminal-cyan text-sm font-semibold flex items-center gap-2">
-            <span>📊</span>
-            Sort By
-          </label>
-          <div className="flex gap-2">
-            <button
-              onClick={() => setSortBy('name')}
-              className={`terminal-button text-sm ${
-                sortBy === 'name' ? 'border-terminal-cyan text-terminal-cyan' : ''
-              }`}
-            >
-              🔤 Name
-            </button>
-            <button
-              onClick={() => setSortBy('category')}
-              className={`terminal-button text-sm ${
-                sortBy === 'category'
-                  ? 'border-terminal-cyan text-terminal-cyan'
-                  : ''
-              }`}
-            >
-              📁 Category
-            </button>
+        {/* View Mode & Sort Options */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* View Mode */}
+          <div className="space-y-2">
+            <label className="text-terminal-cyan text-sm font-semibold flex items-center gap-2">
+              <span>👁️</span>
+              View Mode
+            </label>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`terminal-button text-sm flex-1 ${
+                  viewMode === 'grid' ? 'border-terminal-cyan text-terminal-cyan' : ''
+                }`}
+              >
+                📊 Grid View
+              </button>
+              <button
+                onClick={() => setViewMode('timeline')}
+                className={`terminal-button text-sm flex-1 ${
+                  viewMode === 'timeline' ? 'border-terminal-cyan text-terminal-cyan' : ''
+                }`}
+              >
+                📅 Timeline View
+              </button>
+            </div>
+          </div>
+
+          {/* Sort Options */}
+          <div className="space-y-2">
+            <label className="text-terminal-cyan text-sm font-semibold flex items-center gap-2">
+              <span>📊</span>
+              Sort By
+            </label>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setSortBy('name')}
+                className={`terminal-button text-sm flex-1 ${
+                  sortBy === 'name' ? 'border-terminal-cyan text-terminal-cyan' : ''
+                }`}
+              >
+                🔤 Name
+              </button>
+              <button
+                onClick={() => setSortBy('category')}
+                className={`terminal-button text-sm flex-1 ${
+                  sortBy === 'category'
+                    ? 'border-terminal-cyan text-terminal-cyan'
+                    : ''
+                }`}
+              >
+                📁 Category
+              </button>
+            </div>
           </div>
         </div>
 
@@ -205,34 +251,161 @@ export default function ProjectsListClient({
         </div>
       )}
 
-      {/* Featured Projects */}
-      {featuredProjects.length > 0 && (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-terminal-cyan flex items-center gap-2">
-            <span>⭐</span>
-            Featured Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} featured />
-            ))}
+      {/* Timeline View */}
+      {viewMode === 'timeline' && filteredAndSortedProjects.length > 0 && (
+        <div className="space-y-8">
+          {/* Featured Projects */}
+          {projectsByTimeline.featured.length > 0 && (
+            <div className="space-y-4 animate-slide-up">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-3xl">⭐</span>
+                  <h2 className="text-2xl font-bold text-terminal-cyan">Featured Projects</h2>
+                </div>
+                <div className="flex-1 h-px bg-terminal-border"></div>
+              </div>
+              <p className="text-terminal-textMuted text-sm pl-11">
+                Major achievements and production applications
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-11">
+                {projectsByTimeline.featured.map((project, index) => (
+                  <ProjectCard 
+                    key={project.id} 
+                    project={project} 
+                    featured 
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Professional Work */}
+          {projectsByTimeline.professional.length > 0 && (
+            <div className="space-y-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-3xl">💼</span>
+                  <h2 className="text-2xl font-bold text-terminal-green">Professional Work</h2>
+                </div>
+                <div className="flex-1 h-px bg-terminal-border"></div>
+              </div>
+              <p className="text-terminal-textMuted text-sm pl-11">
+                Enterprise systems at Suntec Business Solutions (2021-Present)
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-11">
+                {projectsByTimeline.professional.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Academic Projects */}
+          {projectsByTimeline.academic.length > 0 && (
+            <div className="space-y-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-3xl">🎓</span>
+                  <h2 className="text-2xl font-bold text-terminal-command">Academic Projects</h2>
+                </div>
+                <div className="flex-1 h-px bg-terminal-border"></div>
+              </div>
+              <p className="text-terminal-textMuted text-sm pl-11">
+                Final year projects and academic achievements (2019-2020)
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-11">
+                {projectsByTimeline.academic.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Learning Journey */}
+          {projectsByTimeline.learning.length > 0 && (
+            <div className="space-y-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-3xl">🌱</span>
+                  <h2 className="text-2xl font-bold text-terminal-text">Learning Journey</h2>
+                </div>
+                <div className="flex-1 h-px bg-terminal-border"></div>
+              </div>
+              <p className="text-terminal-textMuted text-sm pl-11">
+                Early projects and technology exploration (2016-2019)
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-11">
+                {projectsByTimeline.learning.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Timeline Indicator */}
+          <div className="terminal-card bg-terminal-bg animate-fade-in">
+            <div className="space-y-3">
+              <h3 className="text-terminal-cyan font-semibold flex items-center gap-2">
+                <span>📅</span>
+                Project Timeline
+              </h3>
+              <div className="pl-6 space-y-2 text-sm">
+                <div className="flex items-center gap-3">
+                  <span className="text-terminal-green">●</span>
+                  <span className="text-terminal-textMuted">2021-Present:</span>
+                  <span className="text-terminal-text">Professional Work ({projectsByTimeline.professional.length} projects)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-terminal-cyan">●</span>
+                  <span className="text-terminal-textMuted">2019-2020:</span>
+                  <span className="text-terminal-text">Academic Projects ({projectsByTimeline.featured.filter(p => p.id === 'ashraya-ngo-website').length + projectsByTimeline.academic.length} projects)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-terminal-command">●</span>
+                  <span className="text-terminal-textMuted">2016-2019:</span>
+                  <span className="text-terminal-text">Learning Journey ({projectsByTimeline.learning.length} projects)</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Regular Projects */}
-      {regularProjects.length > 0 && (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-terminal-cyan flex items-center gap-2">
-            <span>📦</span>
-            {featuredProjects.length > 0 ? 'All Projects' : 'Projects'}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {regularProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        </div>
+      {/* Grid View (Original) */}
+      {viewMode === 'grid' && filteredAndSortedProjects.length > 0 && (
+        <>
+          {/* Featured Projects */}
+          {projectsByTimeline.featured.length > 0 && (
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-terminal-cyan flex items-center gap-2">
+                <span>⭐</span>
+                Featured Projects
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projectsByTimeline.featured.map((project) => (
+                  <ProjectCard key={project.id} project={project} featured />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Regular Projects */}
+          {(projectsByTimeline.professional.length > 0 || 
+            projectsByTimeline.academic.length > 0 || 
+            projectsByTimeline.learning.length > 0) && (
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-terminal-cyan flex items-center gap-2">
+                <span>📦</span>
+                {projectsByTimeline.featured.length > 0 ? 'All Projects' : 'Projects'}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[...projectsByTimeline.professional, ...projectsByTimeline.academic, ...projectsByTimeline.learning].map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
