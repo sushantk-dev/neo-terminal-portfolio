@@ -29,7 +29,6 @@ const profiles: CodingProfile[] = [
     url: 'https://leetcode.com/sushantkct',
     achievements: [
       '278+ problems solved',
-      'Contest rating: 1,501',
       'Regular contest participant',
     ],
     icon: '⚡',
@@ -114,7 +113,7 @@ export default function CodingProfiles() {
       </div>
 
       {/* Achievements Summary */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
         <div className="terminal-card bg-terminal-bg text-center hover:border-terminal-green active:scale-95 transition-all">
           <div className="text-lg sm:text-xl md:text-2xl font-bold text-terminal-green leading-tight">
             ⭐⭐⭐⭐⭐⭐
@@ -125,10 +124,10 @@ export default function CodingProfiles() {
           <div className="text-xl sm:text-2xl md:text-3xl font-bold text-terminal-command">278+</div>
           <div className="text-xs text-terminal-textMuted mt-1 sm:mt-2 px-1">LeetCode Problems</div>
         </div>
-        <div className="terminal-card bg-terminal-bg text-center hover:border-terminal-cyan active:scale-95 transition-all">
+        {/* <div className="terminal-card bg-terminal-bg text-center hover:border-terminal-cyan active:scale-95 transition-all">
           <div className="text-xl sm:text-2xl md:text-3xl font-bold text-terminal-cyan">1,501</div>
           <div className="text-xs text-terminal-textMuted mt-1 sm:mt-2 px-1">Contest Rating</div>
-        </div>
+        </div> */}
         <div className="terminal-card bg-terminal-bg text-center hover:border-terminal-green active:scale-95 transition-all">
           <div className="text-xl sm:text-2xl md:text-3xl font-bold text-terminal-green">8+</div>
           <div className="text-xs text-terminal-textMuted mt-1 sm:mt-2 px-1">Certifications</div>
