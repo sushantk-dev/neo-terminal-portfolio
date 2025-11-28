@@ -129,8 +129,115 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Skills Section */}
+
+          {/* Notable Projects Section */}
           <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            <div className="space-y-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-terminal-cyan flex items-center">
+                <span className="text-terminal-prompt mr-2">›</span>
+                Key Achievements
+              </h2>
+              <div className="pl-2 sm:pl-6 space-y-4 md:space-y-6">
+                {/* Dubai CEO Project */}
+                <div className="terminal-card bg-terminal-bg border-terminal-cyan">
+                  <div className="space-y-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1">
+                        <h3 className="text-base sm:text-lg font-bold text-terminal-cyan mb-2 flex items-center gap-2">
+                          <span className="text-xl">🏆</span>
+                          CEO Experimental Project - Database Abstraction Prototype
+                        </h3>
+                        <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-terminal-textMuted mb-3">
+                          <span className="flex items-center gap-1">
+                            <span>📍</span>
+                            Dubai Office
+                          </span>
+                          <span className="text-terminal-border">•</span>
+                          <span className="flex items-center gap-1">
+                            <span>🏢</span>
+                            Suntec Business Solutions
+                          </span>
+                          <span className="text-terminal-border">•</span>
+                          <span className="flex items-center gap-1">
+                            <span className="w-2 h-2 bg-terminal-command rounded-full animate-pulse"></span>
+                            Experimental Prototype
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="text-terminal-text text-sm sm:text-base leading-relaxed">
+                      Selected for onsite opportunity at Dubai office to work directly with CEO on experimental prototype for database-agnostic system for Suntec's 
+                      <span className="text-terminal-cyan font-semibold"> Revenue Management System</span>. Contributed to exploring solutions for multi-database compatibility 
+                      serving banking, hospitality, and financial institutions.
+                    </p>
+
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <span className="text-terminal-cyan mt-0.5 flex-shrink-0">▸</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-terminal-text text-sm sm:text-base leading-relaxed">
+                            <span className="font-semibold text-terminal-green">Implemented Redis-based caching layer</span> for the prototype, working on caching strategies 
+                            for frequently accessed data to reduce direct database queries and improve response times
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <span className="text-terminal-cyan mt-0.5 flex-shrink-0">▸</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-terminal-text text-sm sm:text-base leading-relaxed">
+                            <span className="font-semibold text-terminal-green">Collaborated with CEO</span> on experimental approach to enable the revenue management platform 
+                            to interface with multiple database systems (Oracle, PostgreSQL, SQL Server) without tight coupling
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <span className="text-terminal-cyan mt-0.5 flex-shrink-0">▸</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-terminal-text text-sm sm:text-base leading-relaxed">
+                            <span className="font-semibold text-terminal-green">Gained hands-on experience</span> with distributed caching patterns, cache invalidation strategies, 
+                            and performance optimization techniques for enterprise-scale applications
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-terminal-border">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
+                        <div className="text-center p-2 bg-terminal-bg border border-terminal-border rounded">
+                          <div className="text-terminal-cyan font-bold text-sm sm:text-base">Redis</div>
+                          <div className="text-terminal-textMuted text-xs">Caching Layer</div>
+                        </div>
+                        <div className="text-center p-2 bg-terminal-bg border border-terminal-border rounded">
+                          <div className="text-terminal-green font-bold text-sm sm:text-base">CEO</div>
+                          <div className="text-terminal-textMuted text-xs">Direct Collab</div>
+                        </div>
+                        <div className="text-center p-2 bg-terminal-bg border border-terminal-border rounded">
+                          <div className="text-terminal-command font-bold text-sm sm:text-base">Dubai</div>
+                          <div className="text-terminal-textMuted text-xs">Onsite Project</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-terminal-bg border border-terminal-border rounded p-3 sm:p-4">
+                      <p className="text-terminal-textMuted text-xs sm:text-sm leading-relaxed">
+                        <span className="text-terminal-cyan font-semibold">Technologies:</span> Redis, Java, Spring Boot, 
+                        Caching Strategies, Cache Invalidation Patterns
+                      </p>
+                      <p className="text-terminal-textMuted text-xs mt-2 leading-relaxed">
+                        <span className="text-terminal-green font-semibold">Key Learning:</span> Valuable exposure to distributed caching design, 
+                        working directly with leadership on R&D initiatives, and understanding enterprise-scale architectural challenges
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Skills Section */}
+          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl font-bold text-terminal-cyan flex items-center">
                 <span className="text-terminal-prompt mr-2">›</span>
@@ -143,7 +250,7 @@ export default function AboutPage() {
           </div>
 
           {/* Coding Profiles Section */}
-          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.15s' }}>
+          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl font-bold text-terminal-cyan flex items-center">
                 <span className="text-terminal-prompt mr-2">›</span>
@@ -156,7 +263,7 @@ export default function AboutPage() {
           </div>
 
           {/* Certifications Section */}
-          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.175s' }}>
+          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.375s' }}>
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl font-bold text-terminal-cyan flex items-center">
                 <span className="text-terminal-prompt mr-2">›</span>
@@ -169,7 +276,7 @@ export default function AboutPage() {
           </div>
 
           {/* Timeline Section */}
-          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.225s' }}>
+          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.375s' }}>
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl font-bold text-terminal-cyan flex items-center">
                 <span className="text-terminal-prompt mr-2">›</span>
@@ -182,7 +289,7 @@ export default function AboutPage() {
           </div>
 
           {/* Resume Download Section */}
-          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.275s' }}>
+          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.375s' }}>
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl font-bold text-terminal-cyan flex items-center">
                 <span className="text-terminal-prompt mr-2">›</span>
@@ -195,7 +302,7 @@ export default function AboutPage() {
           </div>
 
           {/* Call to Action */}
-          <div className="terminal-card bg-terminal-bg animate-slide-up" style={{ animationDelay: '0.325s' }}>
+          <div className="terminal-card bg-terminal-bg animate-slide-up" style={{ animationDelay: '0.375s' }}>
             <div className="text-center space-y-4 py-6 sm:py-8 px-4">
               <h3 className="text-xl sm:text-2xl font-bold text-gradient">Let's Work Together!</h3>
               <p className="text-terminal-textMuted max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
