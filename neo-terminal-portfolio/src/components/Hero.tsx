@@ -43,7 +43,7 @@ export default function Hero() {
               
               {showSubtitle && (
                 <Typewriter
-                  text="Building scalable web applications with Next.js, TypeScript, and AWS cloud infrastructure"
+                  text="Full Stack Developer specializing in backend microservices with Java, Spring Boot, Angular, Google Cloud and AWS"
                   speed={30}
                   delay={200}
                   className="text-terminal-textMuted text-lg block"
@@ -57,8 +57,8 @@ export default function Hero() {
               <div className="space-y-4 animate-fade-in">
                 <div className="space-y-2">
                   <p className="text-terminal-text leading-relaxed">
-                    Specializing in modern web development, cloud architecture, and DevOps practices. 
-                    Passionate about creating performant, user-centric applications that solve real-world problems.
+                    Specializing in building scalable, high-performance digital systems across web, cloud, and distributed architectures. 
+                    Passionate about creating reliable, user-focused solutions that make a meaningful impact.
                   </p>
                 </div>
 
@@ -107,11 +107,11 @@ export default function Hero() {
                       </li>
                       <li className="flex items-start gap-2 text-terminal-text">
                         <span className="text-terminal-green">✓</span>
-                        <span>Expert in TypeScript, React, Node.js ecosystem</span>
+                        <span>Expert in Java, Spring Boot, Angular, TypeScript, Node.js ecosystem</span>
                       </li>
                       <li className="flex items-start gap-2 text-terminal-text">
                         <span className="text-terminal-green">✓</span>
-                        <span>AWS infrastructure & serverless architecture</span>
+                        <span>Google Cloud infrastructure</span>
                       </li>
                       <li className="flex items-start gap-2 text-terminal-text">
                         <span className="text-terminal-green">✓</span>

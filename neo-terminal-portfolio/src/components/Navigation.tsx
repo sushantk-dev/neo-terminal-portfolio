@@ -38,7 +38,7 @@ export default function Navigation() {
           >
             <span className="text-terminal-prompt font-bold text-xl">❯</span>
             <span className="text-terminal-text font-semibold group-hover:text-terminal-cyan transition-colors">
-              {siteConfig.name.split(' ')[0]}
+              {"sushantdevx"}
             </span>
             <span className="terminal-cursor"></span>
           </Link>

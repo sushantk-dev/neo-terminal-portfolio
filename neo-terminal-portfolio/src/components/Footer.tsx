@@ -17,7 +17,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-terminal-textMuted text-sm">
-              Full-Stack Developer specializing in modern web technologies and cloud infrastructure
+              Full Stack Developer specializing in backend microservices with Java, Spring Boot, Angular, Google Cloud and AWS
             </p>
           </div>
 
