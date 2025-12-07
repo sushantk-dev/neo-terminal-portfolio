@@ -1,0 +1,18 @@
+{
+  "name": "contact-form-lambda",
+  "version": "1.0.0",
+  "description": "AWS Lambda function for handling contact form submissions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lambda",
+    "contact-form",
+    "aws",
+    "ses"
+  ],
+  "author": "Sushant",
+  "license": "MIT",
+  "dependencies": {}
+}

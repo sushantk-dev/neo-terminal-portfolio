@@ -5,3 +5,19 @@ npm run build
 aws s3 sync out/ s3://sushantdevx-bucket --delete
 
 aws cloudfront create-invalidation --distribution-id EDTO5JUSQZ8TS --paths "/*"
+
+aws configure
+
+terraform init
+
+terraform apply
+
+api_endpoint = "https://u7mq7gc1of.execute-api.us-east-1.amazonaws.com/prod/contact"
+lambda_function_arn = "arn:aws:lambda:us-east-1:147602584188:function:neo-terminal-portfolio-contact-form"
+lambda_function_name = "neo-terminal-portfolio-contact-form"
+
+Add cd lambda\contact-form index.js and package.json to function.zip
+
+aws lambda update-function-code --function-name neo-terminal-portfolio-contact-form --region us-east-1 --zip-file fileb://function.zip
+
+aws logs tail /aws/lambda/neo-terminal-portfolio-contact-form --follow --region us-east-1
