@@ -13,6 +13,10 @@ const skillsData: Skill[] = [
   // Backend
   { name: 'Java', level: 95, category: 'Backend', icon: '☕' },
   { name: 'Spring Boot', level: 92, category: 'Backend', icon: '🍃' },
+  { name: 'Angular', level: 90, category: 'Frontend', icon: '🅰️' },
+  { name: 'React', level: 85, category: 'Frontend', icon: '⚛️' },
+  { name: 'TypeScript', level: 90, category: 'Frontend', icon: '🔷' },
+  { name: 'JavaScript', level: 88, category: 'Frontend', icon: '🟨' },
   { name: 'REST APIs', level: 93, category: 'Backend', icon: '🔌' },
   { name: 'Microservices', level: 88, category: 'Backend', icon: '🔧' },
   { name: 'Python', level: 75, category: 'Backend', icon: '🐍' },
@@ -35,13 +39,7 @@ const skillsData: Skill[] = [
   
   // Messaging & Streaming
   { name: 'Apache Kafka', level: 88, category: 'Messaging', icon: '📨' },
-  { name: 'Apache NiFi', level: 82, category: 'Messaging', icon: '🌊' },
-  
-  // Frontend
-  { name: 'JavaScript', level: 88, category: 'Frontend', icon: '🟨' },
-  { name: 'TypeScript', level: 90, category: 'Frontend', icon: '🔷' },
-  { name: 'React', level: 85, category: 'Frontend', icon: '⚛️' },
-  { name: 'Angular', level: 90, category: 'Frontend', icon: '🅰️' },
+  { name: 'Apache NiFi', level: 82, category: 'Messaging', icon: '🌊' }
 ];
 
 const categories = ['All', 'Backend', 'Database', 'DevOps', 'Messaging', 'Frontend'];

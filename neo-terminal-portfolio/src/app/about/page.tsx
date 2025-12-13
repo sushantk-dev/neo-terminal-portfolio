@@ -247,22 +247,22 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Dubai Project Highlight */}
-          <div className="terminal-card animate-slide-up bg-gradient-to-br from-terminal-bg via-terminal-bgLight to-terminal-bg border-terminal-cyan" style={{ animationDelay: '0.1s' }}>
+          {/* Dubai Onsite Experience Section - Enhanced with light mode support */}
+          <div className="terminal-card animate-slide-up" style={{ animationDelay: '0.1s' }}>
             <div className="space-y-4">
-              <div className="flex items-start justify-between gap-4 flex-wrap">
-                <h2 className="text-xl sm:text-2xl font-bold text-terminal-green flex items-center">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <h2 className="text-xl sm:text-2xl font-bold text-terminal-cyan flex items-center">
                   <span className="text-terminal-prompt mr-2">›</span>
-                  Featured Project: Dubai Office Onsite Opportunity
+                  Dubai Onsite Experience
                 </h2>
-                <span className="inline-flex items-center gap-2 px-3 py-1 bg-terminal-cyan/10 border border-terminal-cyan rounded text-terminal-cyan text-xs font-semibold">
-                  <span>🌟</span>
-                  Career Highlight
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-terminal-cyan/10 border border-terminal-cyan rounded-full text-terminal-cyan text-xs font-semibold self-start sm:self-auto">
+                  <span className="w-1.5 h-1.5 bg-terminal-cyan rounded-full"></span>
+                  Special Assignment
                 </span>
               </div>
-              
+
               <div className="pl-2 sm:pl-6 space-y-4">
-                <p className="text-terminal-text text-sm sm:text-base leading-relaxed">
+                <p className="text-sm sm:text-base leading-relaxed">
                   Selected for onsite opportunity at Dubai office to work directly with CEO on experimental prototype for database-agnostic system for Suntec's 
                   <span className="text-terminal-cyan font-semibold"> Revenue Management System</span>. Contributed to exploring solutions for multi-database compatibility 
                   serving banking, hospitality, and financial institutions.
@@ -272,7 +272,7 @@ export default function AboutPage() {
                   <div className="flex items-start gap-2 sm:gap-3">
                     <span className="text-terminal-cyan mt-0.5 flex-shrink-0">▸</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-terminal-text text-sm sm:text-base leading-relaxed">
+                      <p className="text-sm sm:text-base leading-relaxed">
                         <span className="font-semibold text-terminal-green">Implemented Redis-based caching layer</span> for the prototype, working on caching strategies 
                         for frequently accessed data to reduce direct database queries and improve response times
                       </p>
@@ -282,7 +282,7 @@ export default function AboutPage() {
                   <div className="flex items-start gap-2 sm:gap-3">
                     <span className="text-terminal-cyan mt-0.5 flex-shrink-0">▸</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-terminal-text text-sm sm:text-base leading-relaxed">
+                      <p className="text-sm sm:text-base leading-relaxed">
                         <span className="font-semibold text-terminal-green">Collaborated with CEO</span> on experimental approach to enable the revenue management platform 
                         to interface with multiple database systems (Oracle, PostgreSQL, SQL Server) without tight coupling
                       </p>
@@ -292,7 +292,7 @@ export default function AboutPage() {
                   <div className="flex items-start gap-2 sm:gap-3">
                     <span className="text-terminal-cyan mt-0.5 flex-shrink-0">▸</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-terminal-text text-sm sm:text-base leading-relaxed">
+                      <p className="text-sm sm:text-base leading-relaxed">
                         <span className="font-semibold text-terminal-green">Gained hands-on experience</span> with distributed caching patterns, cache invalidation strategies, 
                         and performance optimization techniques for enterprise-scale applications
                       </p>
@@ -304,25 +304,25 @@ export default function AboutPage() {
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
                     <div className="text-center p-2 bg-terminal-bg border border-terminal-border rounded hover:border-terminal-cyan transition-colors">
                       <div className="text-terminal-cyan font-bold text-sm sm:text-base">Redis</div>
-                      <div className="text-terminal-textMuted text-xs">Caching Layer</div>
+                      <div className="text-xs">Caching Layer</div>
                     </div>
                     <div className="text-center p-2 bg-terminal-bg border border-terminal-border rounded hover:border-terminal-green transition-colors">
                       <div className="text-terminal-green font-bold text-sm sm:text-base">CEO</div>
-                      <div className="text-terminal-textMuted text-xs">Direct Collab</div>
+                      <div className="text-xs">Direct Collab</div>
                     </div>
                     <div className="text-center p-2 bg-terminal-bg border border-terminal-border rounded hover:border-terminal-command transition-colors">
                       <div className="text-terminal-command font-bold text-sm sm:text-base">Dubai</div>
-                      <div className="text-terminal-textMuted text-xs">Onsite Project</div>
+                      <div className="text-xs">Onsite Project</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-terminal-bg border border-terminal-border rounded p-3 sm:p-4">
-                  <p className="text-terminal-textMuted text-xs sm:text-sm leading-relaxed">
+                  <p className="text-xs sm:text-sm leading-relaxed">
                     <span className="text-terminal-cyan font-semibold">Technologies:</span> Redis, Java, Spring Boot, 
                     Caching Strategies, Cache Invalidation Patterns
                   </p>
-                  <p className="text-terminal-textMuted text-xs mt-2 leading-relaxed">
+                  <p className="text-xs mt-2 leading-relaxed">
                     <span className="text-terminal-green font-semibold">Key Learning:</span> Valuable exposure to distributed caching design, 
                     working directly with leadership on R&D initiatives, and understanding enterprise-scale architectural challenges
                   </p>
