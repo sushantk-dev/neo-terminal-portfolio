@@ -35,7 +35,7 @@ export default function Hero() {
             {/* Welcome Message - SEO Optimized */}
             <div className="space-y-2 sm:space-y-3">
               <Typewriter
-                text="Hi, I'm Sushant Kumar – Full-Stack Developer"
+                text="Hi, I'm Sushant Kumar – Full-Stack Software Engineer"
                 speed={40}
                 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gradient block leading-tight"
                 onComplete={() => setShowSubtitle(true)}
@@ -43,7 +43,7 @@ export default function Hero() {
               
               {showSubtitle && (
                 <Typewriter
-                  text="Full Stack Developer specializing in backend microservices with Java, Spring Boot, Angular, Google Cloud and AWS"
+                  text="Full-Stack Software Engineer specializing in Java, Spring Boot, Angular, Google Cloud and AWS"
                   speed={30}
                   delay={200}
                   className="text-terminal-textMuted text-sm sm:text-base md:text-lg block leading-relaxed"
