@@ -1,34 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [mounted, setMounted] = useState(false);
+  const { theme, toggleTheme, mounted } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      // Only add 'light' class if saved theme is light
-      document.documentElement.classList.toggle('light', savedTheme === 'light');
-    }
-    // If no saved theme, keep default dark mode
-    // We don't check system preference - dark is the default
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('light', newTheme === 'light');
-  };
-
+  // Render invisible placeholder during SSR to prevent layout shift
   if (!mounted) {
     return (
-      <button className="terminal-button p-2" aria-label="Toggle theme">
+      <button className="terminal-button p-2 opacity-0 pointer-events-none" aria-hidden="true">
         <div className="w-5 h-5">
           {/* Moon icon for dark mode default */}
           <svg
@@ -59,10 +39,11 @@ export default function ThemeToggle() {
         {theme === 'dark' ? (
           // Moon icon for dark mode
           <svg
+            key="moon"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-5 h-5 text-terminal-cyan"
+            className="w-5 h-5 text-terminal-cyan transition-all duration-300"
           >
             <path
               fillRule="evenodd"
@@ -73,10 +54,11 @@ export default function ThemeToggle() {
         ) : (
           // Sun icon for light mode
           <svg
+            key="sun"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-5 h-5 text-terminal-command"
+            className="w-5 h-5 text-terminal-command transition-all duration-300"
           >
             <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
           </svg>
