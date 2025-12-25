@@ -2,7 +2,7 @@
 aws_region = "us-east-1"  # ← Change if using different region
 
 # 2. YOUR email where you want to receive messages
-recipient_email = "sushantdevx@gmail.com"  # ← YOUR EMAIL HERE
+recipient_email = "sushantk.connect@gmail.com"  # ← YOUR EMAIL HERE
 
 # 3. Email that appears as sender (must be verified in SES)
 sender_email = "noreply@sushantkumar.dev"  # ← YOUR SENDER EMAIL

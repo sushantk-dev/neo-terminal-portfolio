@@ -10,7 +10,7 @@ import GitHubActivity from '@/components/GitHubActivity';
 export default async function Home() {
   // Get usernames from environment variables or config
   const mediumUsername = process.env.NEXT_PUBLIC_MEDIUM_USERNAME || 'sushantk.dev';
-  const githubUsername = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'sushantk.dev';
+  const githubUsername = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'sushantk-dev';
 
   // await delay(2000);
 

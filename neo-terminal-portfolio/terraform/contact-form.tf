@@ -121,7 +121,7 @@ resource "aws_iam_role" "lambda_role" {
 
 # IAM policy for Lambda
 resource "aws_iam_role_policy" "lambda_policy" {
-  name = "${var.project_name}-contact-lambda-policy"
+  name = "lambda_policy"
   role = aws_iam_role.lambda_role.id
 
   policy = jsonencode({
@@ -153,7 +153,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
 # ==============================================================================
 
 resource "aws_cloudwatch_log_group" "lambda_logs" {
-  name              = "/aws/lambda/${aws_lambda_function.contact_form.function_name}"
+  name              = "/aws/lambda/${var.project_name}-contact-form"
   retention_in_days = 14
 
   tags = {
@@ -182,7 +182,7 @@ resource "aws_api_gateway_rest_api" "contact_api" {
 }
 
 # API Gateway Resource (/contact)
-resource "aws_api_gateway_resource" "contact_resource" {
+resource "aws_api_gateway_resource" "contact" {
   rest_api_id = aws_api_gateway_rest_api.contact_api.id
   parent_id   = aws_api_gateway_rest_api.contact_api.root_resource_id
   path_part   = "contact"
@@ -191,7 +191,7 @@ resource "aws_api_gateway_resource" "contact_resource" {
 # POST Method
 resource "aws_api_gateway_method" "contact_post" {
   rest_api_id   = aws_api_gateway_rest_api.contact_api.id
-  resource_id   = aws_api_gateway_resource.contact_resource.id
+  resource_id   = aws_api_gateway_resource.contact.id
   http_method   = "POST"
   authorization = "NONE"
 }
@@ -199,15 +199,15 @@ resource "aws_api_gateway_method" "contact_post" {
 # OPTIONS Method (for CORS preflight)
 resource "aws_api_gateway_method" "contact_options" {
   rest_api_id   = aws_api_gateway_rest_api.contact_api.id
-  resource_id   = aws_api_gateway_resource.contact_resource.id
+  resource_id   = aws_api_gateway_resource.contact.id
   http_method   = "OPTIONS"
   authorization = "NONE"
 }
 
 # Lambda Integration for POST
-resource "aws_api_gateway_integration" "lambda_integration" {
+resource "aws_api_gateway_integration" "contact_post" {
   rest_api_id             = aws_api_gateway_rest_api.contact_api.id
-  resource_id             = aws_api_gateway_resource.contact_resource.id
+  resource_id             = aws_api_gateway_resource.contact.id
   http_method             = aws_api_gateway_method.contact_post.http_method
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
@@ -215,9 +215,9 @@ resource "aws_api_gateway_integration" "lambda_integration" {
 }
 
 # Mock Integration for OPTIONS (CORS preflight)
-resource "aws_api_gateway_integration" "options_integration" {
+resource "aws_api_gateway_integration" "contact_options" {
   rest_api_id = aws_api_gateway_rest_api.contact_api.id
-  resource_id = aws_api_gateway_resource.contact_resource.id
+  resource_id = aws_api_gateway_resource.contact.id
   http_method = aws_api_gateway_method.contact_options.http_method
   type        = "MOCK"
 
@@ -226,10 +226,22 @@ resource "aws_api_gateway_integration" "options_integration" {
   }
 }
 
-# Method Response for OPTIONS
-resource "aws_api_gateway_method_response" "options_response" {
+# Method Response for POST
+resource "aws_api_gateway_method_response" "contact_post_200" {
   rest_api_id = aws_api_gateway_rest_api.contact_api.id
-  resource_id = aws_api_gateway_resource.contact_resource.id
+  resource_id = aws_api_gateway_resource.contact.id
+  http_method = aws_api_gateway_method.contact_post.http_method
+  status_code = "200"
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = true
+  }
+}
+
+# Method Response for OPTIONS
+resource "aws_api_gateway_method_response" "contact_options_200" {
+  rest_api_id = aws_api_gateway_rest_api.contact_api.id
+  resource_id = aws_api_gateway_resource.contact.id
   http_method = aws_api_gateway_method.contact_options.http_method
   status_code = "200"
 
@@ -244,12 +256,28 @@ resource "aws_api_gateway_method_response" "options_response" {
   }
 }
 
-# Integration Response for OPTIONS
-resource "aws_api_gateway_integration_response" "options_integration_response" {
+# Integration Response for POST
+resource "aws_api_gateway_integration_response" "contact_post_200" {
   rest_api_id = aws_api_gateway_rest_api.contact_api.id
-  resource_id = aws_api_gateway_resource.contact_resource.id
+  resource_id = aws_api_gateway_resource.contact.id
+  http_method = aws_api_gateway_method.contact_post.http_method
+  status_code = aws_api_gateway_method_response.contact_post_200.status_code
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = "'${var.allowed_origin}'"
+  }
+
+  depends_on = [
+    aws_api_gateway_integration.contact_post
+  ]
+}
+
+# Integration Response for OPTIONS
+resource "aws_api_gateway_integration_response" "contact_options_200" {
+  rest_api_id = aws_api_gateway_rest_api.contact_api.id
+  resource_id = aws_api_gateway_resource.contact.id
   http_method = aws_api_gateway_method.contact_options.http_method
-  status_code = aws_api_gateway_method_response.options_response.status_code
+  status_code = aws_api_gateway_method_response.contact_options_200.status_code
 
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
@@ -258,21 +286,21 @@ resource "aws_api_gateway_integration_response" "options_integration_response" {
   }
 
   depends_on = [
-    aws_api_gateway_integration.options_integration
+    aws_api_gateway_integration.contact_options
   ]
 }
 
 # API Gateway Deployment
-resource "aws_api_gateway_deployment" "contact_deployment" {
+resource "aws_api_gateway_deployment" "contact" {
   rest_api_id = aws_api_gateway_rest_api.contact_api.id
 
   triggers = {
     redeployment = sha1(jsonencode([
-      aws_api_gateway_resource.contact_resource.id,
+      aws_api_gateway_resource.contact.id,
       aws_api_gateway_method.contact_post.id,
       aws_api_gateway_method.contact_options.id,
-      aws_api_gateway_integration.lambda_integration.id,
-      aws_api_gateway_integration.options_integration.id,
+      aws_api_gateway_integration.contact_post.id,
+      aws_api_gateway_integration.contact_options.id,
     ]))
   }
 
@@ -281,14 +309,14 @@ resource "aws_api_gateway_deployment" "contact_deployment" {
   }
 
   depends_on = [
-    aws_api_gateway_integration.lambda_integration,
-    aws_api_gateway_integration.options_integration,
+    aws_api_gateway_integration.contact_post,
+    aws_api_gateway_integration.contact_options,
   ]
 }
 
 # API Gateway Stage
 resource "aws_api_gateway_stage" "prod" {
-  deployment_id = aws_api_gateway_deployment.contact_deployment.id
+  deployment_id = aws_api_gateway_deployment.contact.id
   rest_api_id   = aws_api_gateway_rest_api.contact_api.id
   stage_name    = "prod"
 
